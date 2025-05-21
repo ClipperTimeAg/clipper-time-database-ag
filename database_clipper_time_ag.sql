@@ -89,46 +89,47 @@ CREATE TABLE avaliacoes (
 ) ENGINE=InnoDB
   DEFAULT CHARSET=utf8mb4
   COLLATE=utf8mb4_unicode_ci;
-  
--- =============================  
---          Testes            = 
--- =============================
+
+-- ============================================  
+-- Inserindo primeiros registros manualmente
+-- ============================================  
+
 START TRANSACTION; 
 
-  -- 0) usuarios 
-Insert Into usuarios(name,email,password_hash,phone)
-values 
+-- 1) usuarios 
+INSERT INTO usuarios(name,email,password_hash,phone)
+VALUES 
 ('Anderson Ramos'
   ,'an2767394@gmail.com'
   ,'100000$dd292a51cd972a9beb2431bb931b7169$78615e31e1a24f3316bdc17474da312ceb63b9e1900fb176ef56a9127819d197'
   ,'(11) 93930-2000'
 );
 
- -- 1) profissionais
+-- 2) profissionais
 INSERT INTO profissionais (user_id, bio, specialties, rating)
 VALUES
   (1, 'Barbeiro experiente em cortes clássicos e modernos, especialista em barba e bigode.', 'Corte, Barba, Bigode', 4.9);
 
--- 2) servicos
+-- 3) servicos
 INSERT INTO servicos (name, description, duration_min, price)
 VALUES
   ('Corte de Cabelo', 'Corte de cabelo masculino com estilo personalizado.', 45, 50.00),
   ('Barba', 'Ajuste e modelagem da barba com navalha e máquina.', 30, 40.00),
   ('Corte + Barba', 'Combo com corte de cabelo e barba.', 75, 85.00);
   
--- 3) agendamentos
+-- 4) agendamentos
 INSERT INTO agendamentos (user_id, professional_id, service_id, start_time, end_time, status)
 VALUES
   (1, 1, 3, '2025-05-20 10:00:00', '2025-05-20 11:15:00', 'A');
 
--- 4) produtos
+-- 5) produtos
 INSERT INTO produtos (nome, descricao, situacao, preco, service_id)
 VALUES
   ('Pomada Modeladora', 'Pomada para fixação média com brilho natural.', 'ativo', 35.00, NULL),
   ('Óleo para Barba', 'Óleo hidratante para barba e pele.', 'ativo', 45.00, NULL),
   ('Kit Barba Completo', 'Conjunto com óleo, shampoo e balm para barba.', 'ativo', NULL, NULL);
 
--- 5) avaliacoes
+-- 6) avaliacoes
 INSERT INTO avaliacoes (professional_id, dia_semana, hora_inicio, hora_fim)
 VALUES
   (1, '2025-05-21', '09:00:00', '18:00:00');
